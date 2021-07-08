@@ -391,6 +391,8 @@ func (parser *MessageParser) processPacket(pckt *Packet) {
 
 	m = new(Message)
 	m.IsRequest = in
+	m.SrcAddr = pckt.Src()
+	m.DstAddr = pckt.Dst()
 	parser.m[pckt.MessageID()] = m
 	m.Start = pckt.Timestamp
 	m.parser = parser
